@@ -1,4 +1,4 @@
-from tardisnuclear.io import get_decay_radiation
+from nuclear.io import get_decay_radiation
 from pyne import nucname
 
 class DecayRadiation(object):

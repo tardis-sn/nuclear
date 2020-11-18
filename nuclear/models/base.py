@@ -5,9 +5,9 @@ from astropy import units as u
 from pyne import nucname
 import pandas as pd
 
-from tardisnuclear.ejecta import Ejecta, msun_to_cgs
+from nuclear.ejecta import Ejecta, msun_to_cgs
 
-from tardisnuclear.nuclear_data import DecayRadiation
+from nuclear.nuclear_data import DecayRadiation
 
 mpc_to_cm = u.Mpc.to(u.cm)
 

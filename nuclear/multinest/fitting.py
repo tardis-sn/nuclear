@@ -4,10 +4,10 @@ import sys
 
 from astropy import modeling
 from itertools import chain
-from tardisnuclear.ejecta import Ejecta
+from nuclear.ejecta import Ejecta
 
 
-from tardisnuclear.nuclear_data import DecayRadiation
+from nuclear.nuclear_data import DecayRadiation
 
 from scipy import stats
 from collections import OrderedDict
