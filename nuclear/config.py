@@ -1,11 +1,14 @@
-from tardisnuclear import __path__ as TARDISNUCLEAR_PATH
-import os, logging, shutil
-import yaml
+import logging
+import os
+import shutil
 
+import yaml
 from astropy.config import get_config_dir
 
-TARDISNUCLEAR_PATH = TARDISNUCLEAR_PATH[0]
-DEFAULT_CONFIG_PATH = os.path.join(TARDISNUCLEAR_PATH,
+from nuclear import __path__ as NUCLEAR_PATH
+
+NUCLEAR_PATH = NUCLEAR_PATH[0]
+DEFAULT_CONFIG_PATH = os.path.join(NUCLEAR_PATH,
                                    'default_tardisnuclear_config.yml')
 DEFAULT_DATA_DIR = os.path.join(os.path.expanduser('~'),
                                 'Downloads', 'tardisnuclear')
