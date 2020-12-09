@@ -22,7 +22,7 @@ def get_configuration():
         logger.warning(f"Configuration File {config_fpath} does not exist - "
                        f"creating new one from default")
         shutil.copy(DEFAULT_CONFIG_PATH, config_fpath)
-    return yaml.load(open(config_fpath))
+    return yaml.load(open(config_fpath), Loader=yaml.FullLoader)
 
 
 def get_data_dir():
