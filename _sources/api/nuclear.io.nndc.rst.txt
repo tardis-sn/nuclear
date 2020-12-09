@@ -1,0 +1,20 @@
+nuclear.io.nndc package
+=======================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   nuclear.io.nndc.base
+   nuclear.io.nndc.ensdf
+   nuclear.io.nndc.parsers
+
+Module contents
+---------------
+
+.. automodule:: nuclear.io.nndc
+   :members:
+   :undoc-members:
+   :show-inheritance:

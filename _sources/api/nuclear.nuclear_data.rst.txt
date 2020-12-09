@@ -1,0 +1,7 @@
+nuclear.nuclear\_data module
+============================
+
+.. automodule:: nuclear.nuclear_data
+   :members:
+   :undoc-members:
+   :show-inheritance:

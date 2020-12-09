@@ -1,0 +1,7 @@
+nuclear.multinest.fitting module
+================================
+
+.. automodule:: nuclear.multinest.fitting
+   :members:
+   :undoc-members:
+   :show-inheritance:

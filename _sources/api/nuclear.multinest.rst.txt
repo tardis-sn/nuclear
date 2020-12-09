@@ -1,0 +1,19 @@
+nuclear.multinest package
+=========================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   nuclear.multinest.fitting
+   nuclear.multinest.priors
+
+Module contents
+---------------
+
+.. automodule:: nuclear.multinest
+   :members:
+   :undoc-members:
+   :show-inheritance:

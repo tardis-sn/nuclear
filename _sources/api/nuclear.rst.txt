@@ -1,0 +1,32 @@
+nuclear package
+===============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   nuclear.io
+   nuclear.models
+   nuclear.multinest
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   nuclear.config
+   nuclear.conftest
+   nuclear.ejecta
+   nuclear.nuclear_data
+   nuclear.version
+
+Module contents
+---------------
+
+.. automodule:: nuclear
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+nuclear.ejecta module
+=====================
+
+.. automodule:: nuclear.ejecta
+   :members:
+   :undoc-members:
+   :show-inheritance:

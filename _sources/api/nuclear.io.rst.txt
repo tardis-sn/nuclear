@@ -1,0 +1,26 @@
+nuclear.io package
+==================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   nuclear.io.nndc
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   nuclear.io.read_henke
+
+Module contents
+---------------
+
+.. automodule:: nuclear.io
+   :members:
+   :undoc-members:
+   :show-inheritance:

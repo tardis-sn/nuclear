@@ -1,0 +1,7 @@
+nuclear.models.base module
+==========================
+
+.. automodule:: nuclear.models.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

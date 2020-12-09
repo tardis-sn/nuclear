@@ -1,0 +1,7 @@
+nuclear.version module
+======================
+
+.. automodule:: nuclear.version
+   :members:
+   :undoc-members:
+   :show-inheritance:

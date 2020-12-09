@@ -1,0 +1,7 @@
+nuclear.conftest module
+=======================
+
+.. automodule:: nuclear.conftest
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+nuclear.multinest.priors module
+===============================
+
+.. automodule:: nuclear.multinest.priors
+   :members:
+   :undoc-members:
+   :show-inheritance:
