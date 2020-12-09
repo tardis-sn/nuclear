@@ -118,7 +118,7 @@ release = package.__version__
 
 
 # -- APIDoc configuration -----------------------------------------------------
-apidoc_module_dir = '../tardis'
+apidoc_module_dir = '../nuclear'
 apidoc_output_dir = 'api'
 apidoc_excluded_paths = ['*tests*', '*setup_package*']
 apidoc_separate_modules = True
