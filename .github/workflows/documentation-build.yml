@@ -1,0 +1,39 @@
+name: Documentation build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  documentation_build:
+    name: Documentation build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get environment file
+        run: curl -o tardis_env3.yml https://raw.githubusercontent.com/tardis-sn/tardis/master/tardis_env3.yml
+
+      - name: Setup TARDIS environment 
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+            environment-file: tardis_env3.yml
+            activate-environment: tardis
+            channels: conda-forge, defaults
+            mamba-version: "*"
+
+      - name: Install nuclear
+        shell: bash -l {0}
+        run: python setup.py install 
+
+      - name: Build documentation
+        shell: bash -l {0}
+        run: cd docs && make html
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/_build/html/
+          publish_branch: gh-pages
