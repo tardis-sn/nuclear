@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>nuclear.ejecta module &mdash; nuclear v0.1.dev1+g9261471</title>
+  <title>nuclear.ejecta module &mdash; nuclear v0.1.dev1+gb687c74</title>
   
 
   
@@ -17,7 +17,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -30,7 +33,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -51,7 +53,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> nuclear
+            <a href="../index.html" class="icon icon-home"> nuclear
           
 
           
@@ -61,7 +63,7 @@
             
             
               <div class="version">
-                0.1.dev1+g9261471
+                0.1.dev1+gb687c74
               </div>
             
           
@@ -129,6 +131,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -140,7 +144,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/api/nuclear.ejecta.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -182,7 +186,7 @@
 <span id="nuclear-ejecta-module"></span><h1>nuclear.ejecta module<a class="headerlink" href="#module-nuclear.ejecta" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="nuclear.ejecta.Ejecta">
-<em class="property">class </em><code class="sig-prename descclassname">nuclear.ejecta.</code><code class="sig-name descname">Ejecta</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mass_msol</span></em>, <em class="sig-param"><span class="n">composition</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">nuclear.ejecta.</span></code><code class="sig-name descname"><span class="pre">Ejecta</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mass_msol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">composition</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Radioactive Ejecta composition</p>
 <dl class="field-list simple">
@@ -198,12 +202,12 @@ will be normalized to 1</p>
 </dl>
 <dl class="py method">
 <dt id="nuclear.ejecta.Ejecta.N">
-<em class="property">property </em><code class="sig-name descname">N</code><a class="headerlink" href="#nuclear.ejecta.Ejecta.N" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">N</span></code><a class="headerlink" href="#nuclear.ejecta.Ejecta.N" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="nuclear.ejecta.Ejecta.decay">
-<code class="sig-name descname">decay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">epochs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.decay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.decay" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">decay</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.decay"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.decay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decay the ejecta material</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -221,7 +225,7 @@ will be normalized to 1</p>
 
 <dl class="py method">
 <dt id="nuclear.ejecta.Ejecta.from_masses">
-<em class="property">classmethod </em><code class="sig-name descname">from_masses</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.from_masses"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.from_masses" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_masses</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.from_masses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.from_masses" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize the ejecta from masses</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -235,57 +239,57 @@ will be normalized to 1</p>
 
 <dl class="py method">
 <dt id="nuclear.ejecta.Ejecta.from_yann_file">
-<em class="property">classmethod </em><code class="sig-name descname">from_yann_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fname</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.from_yann_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.from_yann_file" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_yann_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.from_yann_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.from_yann_file" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="nuclear.ejecta.Ejecta.get_all_children">
-<code class="sig-name descname">get_all_children</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.get_all_children"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.get_all_children" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_all_children</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.get_all_children"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.get_all_children" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="nuclear.ejecta.Ejecta.get_all_children_nuc_name">
-<code class="sig-name descname">get_all_children_nuc_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.get_all_children_nuc_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.get_all_children_nuc_name" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_all_children_nuc_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.get_all_children_nuc_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.get_all_children_nuc_name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="nuclear.ejecta.Ejecta.get_decay_constant">
-<code class="sig-name descname">get_decay_constant</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.get_decay_constant"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.get_decay_constant" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_decay_constant</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.get_decay_constant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.get_decay_constant" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="nuclear.ejecta.Ejecta.get_decayed_numbers">
-<code class="sig-name descname">get_decayed_numbers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">epochs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.get_decayed_numbers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.get_decayed_numbers" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_decayed_numbers</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.get_decayed_numbers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.get_decayed_numbers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="nuclear.ejecta.Ejecta.get_half_life">
-<code class="sig-name descname">get_half_life</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.get_half_life"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.get_half_life" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_half_life</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.get_half_life"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.get_half_life" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="nuclear.ejecta.Ejecta.get_masses">
-<code class="sig-name descname">get_masses</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.get_masses"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.get_masses" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_masses</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.get_masses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.get_masses" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="nuclear.ejecta.Ejecta.get_numbers">
-<code class="sig-name descname">get_numbers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.get_numbers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.get_numbers" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_numbers</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.get_numbers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.get_numbers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="nuclear.ejecta.Ejecta.isotopes">
-<em class="property">property </em><code class="sig-name descname">isotopes</code><a class="headerlink" href="#nuclear.ejecta.Ejecta.isotopes" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">isotopes</span></code><a class="headerlink" href="#nuclear.ejecta.Ejecta.isotopes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="nuclear.ejecta.Ejecta.keys">
-<code class="sig-name descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.keys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.keys" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">keys</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nuclear/ejecta.html#Ejecta.keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#nuclear.ejecta.Ejecta.keys" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="nuclear.ejecta.Ejecta.mass">
-<em class="property">property </em><code class="sig-name descname">mass</code><a class="headerlink" href="#nuclear.ejecta.Ejecta.mass" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">mass</span></code><a class="headerlink" href="#nuclear.ejecta.Ejecta.mass" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -297,28 +301,25 @@ will be normalized to 1</p>
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, TARDIS collaboration
+        &#169; Copyright 2021, TARDIS collaboration.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
