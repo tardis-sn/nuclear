@@ -19,6 +19,7 @@ from nuclear.io.nndc.parsers import decay_radiation_parsers
 TARDISNUCLEAR_DATA_DIR = pathlib.Path(get_data_dir())
 import datetime
 from pyne import nucname
+from uncertainties import ufloat_fromstr
 
 NNDC_DECAY_RADIATION_BASE_URL = (
     "http://www.nndc.bnl.gov/nudat2/" "decaysearchdirect.jsp?nuc={nucname}&unc=nds"
@@ -100,8 +101,6 @@ def download_raw_decay_radiation(isotope_string):
                 datasets.append(cur_dataset)
             cur_dataset = {}
         cur_dataset[data_type] = str(data_portion)
-        print(data_type)
-        print(data_portion)
     cur_dataset["download-timestamp"] = str(datetime.datetime.utcnow())
     datasets.append(cur_dataset)
     return datasets
@@ -158,13 +157,45 @@ def parse_decay_radiation_dataset(decay_rad_dataset_dict):
             decay_table_df = decay_table_df.drop(decay_table_df.index[0])
             for column in decay_table_df:
                 if column != "DecayScheme" and column != "ENSDFfile":
-                    meta[column] = decay_table_df[column].values[0]
+                    if column == "Parent T1/2" or column == "GS-GS Q-value (keV)":
+                        value = decay_table_df[column].values[0]
+                        unit = ''.join(x for x in value if x.isalpha())
+                        if unit == '':
+                            unit = '\xa0'
+                            value = value.replace('\xa0', ' \xa0 ')
+                        nominal, unc = parse_uncertainties(value, unit)
+                        if column  == "GS-GS Q-value (keV)":
+                            unit = column[-4:-1]
+                            column = column[:-12]
+                        meta[column+' value'] = str(nominal) + ' ' + unit
+                        meta[column+' unc'] = str(unc) + ' ' + unit
+                    else:
+                        meta[column] = decay_table_df[column].values[0]
         else:
             logger.warning(f"Data Type {data_type} not known and not parsed")
     full_dataset = pd.concat(dataset)
     full_dataset["download-timestamp"] = decay_rad_dataset_dict["download-timestamp"]
     return full_dataset, meta
 
+def parse_uncertainties(unc_raw_str, split_unc_symbol='%'):
+        unc_raw_str = unc_raw_str.lower()
+
+        value_unc_pair = [item.strip()
+                      for item in unc_raw_str.split(split_unc_symbol)]
+
+        if len(value_unc_pair) == 1:  # if no uncertainty given
+            return float(value_unc_pair[0]), np.nan
+        else:
+            value, unc = value_unc_pair[:2]  # limit to two
+        if unc == "" or unc == "?":  # if uncertainty_str is empty or unknown
+            unc = np.nan
+        if "e" in value:
+            exp_pos = value.find("e")
+            unc_str = value[:exp_pos] + f"({unc})" + value[exp_pos:]
+        else:
+            unc_str = value + f"({unc})"
+        parsed_uncertainty = ufloat_fromstr(unc_str)
+        return parsed_uncertainty.nominal_value, parsed_uncertainty.std_dev
 
 def download_decay_radiation(isotope_string):
     """
