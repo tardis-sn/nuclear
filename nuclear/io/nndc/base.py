@@ -14,7 +14,7 @@ import pathlib
 # getting the data_path
 
 from nuclear.config import get_data_dir
-from nuclear.io.nndc.parsers import decay_radiation_parsers
+from nuclear.io.nndc.parsers import decay_radiation_parsers, uncertainty_parser
 
 TARDISNUCLEAR_DATA_DIR = pathlib.Path(get_data_dir())
 import datetime
@@ -163,7 +163,7 @@ def parse_decay_radiation_dataset(decay_rad_dataset_dict):
                         if unit == '':
                             unit = '\xa0'
                             value = value.replace('\xa0', ' \xa0 ')
-                        nominal, unc = parse_uncertainties(value, unit)
+                        nominal, unc = uncertainty_parser(value, split_unc_symbol=unit)
                         if column  == "GS-GS Q-value (keV)":
                             unit = column[-4:-1]
                             column = column[:-12]
@@ -177,25 +177,6 @@ def parse_decay_radiation_dataset(decay_rad_dataset_dict):
     full_dataset["download-timestamp"] = decay_rad_dataset_dict["download-timestamp"]
     return full_dataset, meta
 
-def parse_uncertainties(unc_raw_str, split_unc_symbol='%'):
-        unc_raw_str = unc_raw_str.lower()
-
-        value_unc_pair = [item.strip()
-                      for item in unc_raw_str.split(split_unc_symbol)]
-
-        if len(value_unc_pair) == 1:  # if no uncertainty given
-            return float(value_unc_pair[0]), np.nan
-        else:
-            value, unc = value_unc_pair[:2]  # limit to two
-        if unc == "" or unc == "?":  # if uncertainty_str is empty or unknown
-            unc = np.nan
-        if "e" in value:
-            exp_pos = value.find("e")
-            unc_str = value[:exp_pos] + f"({unc})" + value[exp_pos:]
-        else:
-            unc_str = value + f"({unc})"
-        parsed_uncertainty = ufloat_fromstr(unc_str)
-        return parsed_uncertainty.nominal_value, parsed_uncertainty.std_dev
 
 def download_decay_radiation(isotope_string):
     """
