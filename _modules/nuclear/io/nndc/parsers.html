@@ -7,13 +7,16 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>nuclear.io.nndc.parsers &mdash; nuclear v0.1.dev1+gb687c74</title>
+  <title>nuclear.io.nndc.parsers &mdash; nuclear v0.1.dev1+g331c0ee</title>
   
 
   
   <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/plot_directive.css" type="text/css" />
 
   
   
@@ -30,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
@@ -63,7 +67,7 @@
             
             
               <div class="version">
-                0.1.dev1+gb687c74
+                0.1.dev1+g331c0ee
               </div>
             
           
@@ -162,17 +166,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
-<div class="viewcode-block" id="BaseParser"><a class="viewcode-back" href="../../../../api/nuclear.io.nndc.parsers.html#nuclear.io.nndc.parsers.BaseParser">[docs]</a><span class="k">class</span> <span class="nc">BaseParser</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_convert_html_to_df</span><span class="p">(</span><span class="n">html_table</span><span class="p">,</span> <span class="n">column_names</span><span class="p">):</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">html_table</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-        <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">column_names</span>
-        <span class="k">if</span> <span class="s2">&quot;type&quot;</span> <span class="ow">in</span> <span class="n">column_names</span><span class="p">:</span>
-            <span class="n">df</span><span class="o">.</span><span class="n">type</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">df</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_parse_uncertainties</span><span class="p">(</span><span class="n">unc_raw_str</span><span class="p">,</span> <span class="n">split_unc_symbol</span><span class="o">=</span><span class="s1">&#39;%&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="uncertainty_parser"><a class="viewcode-back" href="../../../../api/nuclear.io.nndc.parsers.html#nuclear.io.nndc.parsers.uncertainty_parser">[docs]</a><span class="k">def</span> <span class="nf">uncertainty_parser</span><span class="p">(</span><span class="n">unc_raw_str</span><span class="p">,</span> <span class="n">split_unc_symbol</span><span class="o">=</span><span class="s1">&#39;%&#39;</span><span class="p">):</span>
         <span class="n">unc_raw_str</span> <span class="o">=</span> <span class="n">unc_raw_str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
         <span class="n">value_unc_pair</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -190,26 +184,36 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">unc_str</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">unc</span><span class="si">}</span><span class="s2">)&quot;</span>
         <span class="n">parsed_uncertainty</span> <span class="o">=</span> <span class="n">ufloat_fromstr</span><span class="p">(</span><span class="n">unc_str</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">parsed_uncertainty</span><span class="o">.</span><span class="n">nominal_value</span><span class="p">,</span> <span class="n">parsed_uncertainty</span><span class="o">.</span><span class="n">std_dev</span>
+        <span class="k">return</span> <span class="n">parsed_uncertainty</span><span class="o">.</span><span class="n">nominal_value</span><span class="p">,</span> <span class="n">parsed_uncertainty</span><span class="o">.</span><span class="n">std_dev</span></div>
+
+
+<div class="viewcode-block" id="BaseParser"><a class="viewcode-back" href="../../../../api/nuclear.io.nndc.parsers.html#nuclear.io.nndc.parsers.BaseParser">[docs]</a><span class="k">class</span> <span class="nc">BaseParser</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_convert_html_to_df</span><span class="p">(</span><span class="n">html_table</span><span class="p">,</span> <span class="n">column_names</span><span class="p">):</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">html_table</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">column_names</span>
+        <span class="k">if</span> <span class="s2">&quot;type&quot;</span> <span class="ow">in</span> <span class="n">column_names</span><span class="p">:</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">type</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">df</span>
 
     <span class="k">def</span> <span class="nf">_sanititze_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
         <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="s2">&quot;intensity&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
             <span class="n">intensity_raw</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;intensity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-                <span class="n">BaseParser</span><span class="o">.</span><span class="n">_parse_uncertainties</span><span class="p">)</span>
+                <span class="n">uncertainty_parser</span><span class="p">)</span>
             <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;intensity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">intensity_raw</span><span class="p">]</span>
             <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;intensity_unc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
                                           <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">intensity_raw</span><span class="p">]</span>
         <span class="k">if</span> <span class="s2">&quot;energy&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
             <span class="n">energy</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-                <span class="n">BaseParser</span><span class="o">.</span><span class="n">_parse_uncertainties</span><span class="p">,</span> <span class="n">split_unc_symbol</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+                <span class="n">uncertainty_parser</span><span class="p">,</span> <span class="n">split_unc_symbol</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
             <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;energy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">energy</span><span class="p">]</span>
             <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;energy_unc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">energy</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="s2">&quot;end_point_energy&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
             <span class="n">end_point_energy</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;end_point_energy&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-                <span class="n">BaseParser</span><span class="o">.</span><span class="n">_parse_uncertainties</span><span class="p">,</span> <span class="n">split_unc_symbol</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+                <span class="n">uncertainty_parser</span><span class="p">,</span> <span class="n">split_unc_symbol</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
             <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;end_point_energy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
                 <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">end_point_energy</span><span class="p">]</span>
             <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;end_point_energy_unc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
