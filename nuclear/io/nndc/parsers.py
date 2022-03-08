@@ -38,6 +38,9 @@ class BaseParser(metaclass=ABCMeta):
         return df
 
     def _sanititze_table(self, df):
+        if "dose" in df.columns:
+            del df["dose"]
+
         df.dropna(inplace=True)
 
         if "intensity" in df.columns:
@@ -60,8 +63,6 @@ class BaseParser(metaclass=ABCMeta):
             df.loc[:, "end_point_energy_unc"] = [
                 item[1] for item in end_point_energy]
 
-        if "dose" in df.columns:
-            del df["dose"]
         df['heading'] = self.html_name
         return df
 
