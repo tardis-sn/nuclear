@@ -18,7 +18,7 @@ from nuclear.io.nndc.parsers import decay_radiation_parsers, uncertainty_parser
 
 TARDISNUCLEAR_DATA_DIR = pathlib.Path(get_data_dir())
 import datetime
-from pyne import nucname
+from radioactivedecay.utils import parse_nuclide_str
 from uncertainties import ufloat_fromstr
 
 NNDC_DECAY_RADIATION_BASE_URL = (
@@ -47,7 +47,7 @@ def _sanitize_isotope_string(isotope_string):
     sanitized_isotope_string: str
     """
     try:
-        sanitized_isotope_string = nucname.name(isotope_string)
+        sanitized_isotope_string = parse_nuclide_str(isotope_string).replace("-", "")
     except RuntimeError:
         raise ValueError(f"{isotope_string} not a valid isotope string")
     else:
