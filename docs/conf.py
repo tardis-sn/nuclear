@@ -161,7 +161,7 @@ html_favicon = 'tardis_logo.ico'
 html_title = '{0} v{1}'.format(project, release)
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = project + 'doc'
+htmlhelp_basename = f'{project}doc'
 
 #html_extra_path = ['research/code_comparison/plasma_compare/tardis_example.yml']
 
@@ -170,13 +170,15 @@ htmlhelp_basename = project + 'doc'
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [('index', project + '.tex', project + u' Documentation',
-                    author, 'manual')]
+latex_documents = [
+    ('index', f'{project}.tex', f'{project} Documentation', author, 'manual')
+]
 
 
 # -- Options for manual page output --------------------------------------------
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [('index', project.lower(), project + u' Documentation',
-              [author], 1)]
+man_pages = [
+    ('index', project.lower(), f'{project} Documentation', [author], 1)
+]

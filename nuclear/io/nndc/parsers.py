@@ -17,7 +17,7 @@ def uncertainty_parser(unc_raw_str, split_unc_symbol='%'):
         return float(value_unc_pair[0]), np.nan
     else:
         value, unc = value_unc_pair[:2]  # limit to two
-    if unc == "" or unc == "?":  # if uncertainty_str is empty or unknown
+    if unc in ["", "?"]:  # if uncertainty_str is empty or unknown
         unc = np.nan
     if "e" in value:
         exp_pos = value.find("e")

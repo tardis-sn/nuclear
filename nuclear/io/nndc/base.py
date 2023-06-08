@@ -134,7 +134,7 @@ def parse_decay_radiation_dataset(decay_rad_dataset_dict):
             data_set_id = int(DATASET_PATTERN.match(data_type).group(1))
             logger.info(f"Importing new Dataset {data_set_id}")
             dataset = []
-            if len(dataset) != 0:
+            if dataset:
                 raise ValueError(
                     "Trying to import multiple Datasets for one "
                     "isotope. Currently, this is not supported - "
@@ -158,19 +158,19 @@ def parse_decay_radiation_dataset(decay_rad_dataset_dict):
             decay_table_df.columns = decay_table_df.iloc[0]
             decay_table_df = decay_table_df.drop(decay_table_df.index[0])
             for column in decay_table_df:
-                if column != "DecayScheme" and column != "ENSDFfile":
-                    if column == "Parent T1/2" or column == "GS-GS Q-value (keV)":
+                if column not in ["DecayScheme", "ENSDFfile"]:
+                    if column in ["Parent T1/2", "GS-GS Q-value (keV)"]:
                         value = decay_table_df[column].values[0]
                         unit = "".join(x for x in value if x.isalpha())
-                        if unit == "":
+                        if not unit:
                             unit = "\xa0"
                             value = value.replace("\xa0", " \xa0 ")
                         nominal, unc = uncertainty_parser(value, split_unc_symbol=unit)
                         if column == "GS-GS Q-value (keV)":
                             unit = column[-4:-1]
                             column = column[:-12]
-                        meta[column + " value"] = str(nominal) + " " + unit
-                        meta[column + " unc"] = str(unc) + " " + unit
+                        meta[column + " value"] = f"{str(nominal)} " + unit
+                        meta[column + " unc"] = f"{str(unc)} " + unit
                     else:
                         meta[column] = decay_table_df[column].values[0]
         else:
@@ -219,7 +219,7 @@ def update_decay_radiation_from_ejecta(ejecta, force_update=False):
         try:
             store_decay_radiation(isotope, force_update=force_update)
         except IOError as e:
-            print(str(e))
+            print(e)
             print("skipping")
 
 
@@ -244,11 +244,7 @@ def store_decay_radiation(isotope_string, force_update=False):
     else:
         file_exists = True
         decay_radiation_db = pd.read_hdf(db_fname, "decay_radiation")
-        if isotope_string in decay_radiation_db.index:
-            data_exists = True
-        else:
-            data_exists = False
-
+        data_exists = isotope_string in decay_radiation_db.index
     if data_exists and not force_update:
         logger.warning(
             f"{isotope_string} is already in the database "
